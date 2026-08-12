@@ -1,0 +1,4 @@
+# Runtime dependencies for generate_recap.py
+yfinance>=0.2.54
+pandas>=2.0
+jinja2>=3.1

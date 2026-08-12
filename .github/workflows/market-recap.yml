@@ -33,9 +33,13 @@ jobs:
         with:
           python-version: '3.x'
       - name: Install dependencies
-        run: python -m pip install --upgrade pip yfinance
+        run: python -m pip install --upgrade pip && python -m pip install -r requirements.txt
+      - name: Verify Python dependencies
+        run: python -c "import jinja2, pandas, yfinance; print('Dependencies imported successfully')"
       - name: Generate dashboard
         run: python generate_recap.py
+      - name: Verify generated page
+        run: test -s docs/index.html
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact
